@@ -56,6 +56,26 @@ var WholeArticleView = Backbone.View.extend({
 
 });
 
+var NewArticleView = Backbone.View.extend({
+
+  template: _.template($('#new-template').html()),
+
+   events: {
+  //   'change .completed-chk': 'completedChanged'
+   },
+
+  initialize: function() {
+    this.model.bind('change', this.render, this);
+    this.model.bind('destroy', this.remove, this);
+  },
+
+
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+
+});
 
 
 
@@ -64,6 +84,8 @@ var ArticleAppView = Backbone.View.extend({
 
   events: {
     'click #view-btn': 'viewWholeArticle',
+    'click #new-btn' : 'createNewArticle',
+    'click #Save'    :  'saveNewArticle'
   },
 
   initialize: function() {
@@ -73,6 +95,7 @@ var ArticleAppView = Backbone.View.extend({
     this.articles.bind('reset', this.renderArticles, this);
     this.articles.bind('add', this.renderOneArticle, this);
     this.articles.bind('add', this.viewWholeArticle, this);
+    this.articles.bind('add', this.createNewArticle, this);
 
     this.articles.fetch();
 
@@ -95,19 +118,23 @@ var ArticleAppView = Backbone.View.extend({
     var view = new ArticleView({model: article});
     this.$('#articles').append(view.render().el);
   },
-  
+
   viewWholeArticle: function(button){
        this.$('#articles').empty();
        var id = button.currentTarget.name;
-       console.log(id);
-//       var articles = new Articles ;
-//       articles.fetch();
-       console.log(articles);
        var article = this.articles.get(id);
-      console.log(article.attributes.Summary);
       var view = new WholeArticleView({model: article});
       this.$('#articles').append(view.render().el);
 
+  },
+
+  createNewArticle: function(){
+
+    this.$('#articles').empty();
+    var article = new Article;
+    var view = new NewArticleView({model: article});
+        console.log(view);
+    this.$('#articles').append(view.render().el);
   }
 
 });
