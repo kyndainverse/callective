@@ -25,13 +25,26 @@
 
   <script type="text/html" id="article-template">
   <div class="span6">
- <a>
-    <%= Title %>
-  </a>
+
+ <button class="btn btn-large btn-primary" name=<%= id %> id="view-btn" type="button"><%= Title %></button>
+ 
  <p>
     <%= Summary %>
   </p>
   </div>
+
+</script>
+
+  <script type="text/html" id="whole-template">
+  <div class="span8 offset2" >
+
+ <p><%= Title %></p>
+ 
+ <p>
+    <%= Content %>
+  </p>
+  </div>
+
 
   </script>
 
