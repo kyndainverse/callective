@@ -85,7 +85,7 @@ var ArticleAppView = Backbone.View.extend({
   events: {
     'click #view-btn': 'viewWholeArticle',
     'click #new-btn' : 'createNewArticle',
-    'click #Save'    :  'saveNewArticle'
+    'click #add-btn': 'addArticle',   
   },
 
   initialize: function() {
@@ -133,9 +133,26 @@ var ArticleAppView = Backbone.View.extend({
     this.$('#articles').empty();
     var article = new Article;
     var view = new NewArticleView({model: article});
-        console.log(view);
     this.$('#articles').append(view.render().el);
-  }
+  },
+
+    addArticle: function() {
+     var title = this.$('#newTitle').val();
+     var contents = this.$('#newArticle').val();
+     console.log(contents);
+     new Article({
+          Title: title,
+          Content: contents
+      });
+
+       // article.create({
+       //   Title: title,
+       //   Contents: contents
+       // });
+       // this.$('#newTitle').val('');
+       // this.$('#newArticle').val('');
+       // return false;
+  },
 
 });
 
