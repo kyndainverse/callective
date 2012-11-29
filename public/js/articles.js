@@ -102,7 +102,6 @@ var ArticleAppView = Backbone.View.extend({
 
   },
   render: function() {
-    console.log(articles);
     if (this.articles.length) {
       this.$('#empty').hide();
     } else {
@@ -137,21 +136,20 @@ var ArticleAppView = Backbone.View.extend({
   },
 
     addArticle: function() {
-     var title = this.$('#newTitle').val();
-     var contents = this.$('#newArticle').val();
-     console.log(contents);
-     new Article({
-          Title: title,
-          Content: contents
-      });
+      var title = this.$('#newTitle').val();
+      var contents = this.$('#newArticle').val();
 
-       // article.create({
-       //   Title: title,
-       //   Contents: contents
-       // });
-       // this.$('#newTitle').val('');
-       // this.$('#newArticle').val('');
-       // return false;
+     newone = new Articles ;
+  
+      newone.create({
+         Title: title,
+         Content: contents
+        });
+
+        console.log(newone);
+        this.$('#newTitle').val('');
+        this.$('#newArticle').val('');
+
   },
 
 });
