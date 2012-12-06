@@ -34,6 +34,22 @@ $scope.login = function() {
            console.log($scope.user);
   };
 
+  $scope.articles = function () {
+
+dpd.articles.get(function (result, err) {
+  if(err) return console.log(err);
+ //    console.log(result);
+    $scope.allarticles = result;
+    });
+   // console.log($scope.allarticles)
+   var $length = $scope.allarticles.length;
+   // console.log($length);
+   for (var i = 0; i < $scope.allarticles.length; i++) {
+    console.log($scope.allarticles[i].Title);
+    //Do something
+}
+  };
+
   $scope.test = 0 ;
 
 });

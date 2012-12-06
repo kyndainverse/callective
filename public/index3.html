@@ -16,6 +16,12 @@
       <h1>The First Callective - Refactored</h1>
         <p></p>
         <button class= "btn btn-large" type="button" id="new-btn" > New Article</button>
+        <button class= "btn btn-large" ng-click="articles()" > Get Articles</button>
+        
+        <p ng-repeat="i in allarticles">
+       here {{allarticles.i}}
+      </p>
+
 
 <div ng-init="currentUser()">
       Welcome, @{{user}}!
