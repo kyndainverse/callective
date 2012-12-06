@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <script type="text/javascript" src="/libs/angular.js"></script>
+        <script type="text/javascript" src="dpd.js"></script>   
+    <script type="text/javascript" src="js/articlesng.js"></script>
 </head>
     <body ng-controller="CallectiveApp">
 
@@ -15,6 +17,10 @@
         <p></p>
         <button class= "btn btn-large" type="button" id="new-btn" > New Article</button>
 
+<div ng-init="currentUser()">
+      Welcome, @{{user}}!
+</div>
+
    <form>
       <label>Username</label>
       <input type="text" ng-model="username" />
@@ -22,9 +28,16 @@
       <input type="password" ng-model="password" />
       <div>
         <button class="btn btn-primary" ng-click="login()">Log in</button>
-
+          <button class="btn btn-primary" ng-click="currentUser()">Who?</button>
       </div>
+      <!-- <div ng-hide="test">Login please </div> -->
+
+  <!-- <div ngShow =currentUser.user > Welcome, @{{currentUser.user}}! </div> -->
+
+
+
     </form>
+
 
  
 </body>
@@ -34,8 +47,7 @@
 
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="dpd.js"></script>   
-    <script type="text/javascript" src="js/articlesng.js"></script>
+
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
 
